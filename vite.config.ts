@@ -5,6 +5,7 @@ import * as path from "node:path";
 const dynamicImport = require('./dynamic-import.ts').default;
 
 export default defineConfig({
+    base: '/InqGoesWeb/',
     plugins: [
         react(),
         dynamicImport({
