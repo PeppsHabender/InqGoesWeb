@@ -77,13 +77,13 @@ theme = createTheme(theme, {
             color: lighten(theme.gw2.abyss, 0.6),
         },
         body1: {
-            "font-size": `clamp(10px, 0.9vw, 16px)`,
+            "font-size": `clamp(10px, 1.3vw, 20px)`,
         },
         body2: {
-            "font-size": `clamp(9px, 0.85vw, 15px)`,
+            "font-size": `clamp(9px, 1.2vw, 18px)`,
         },
         subtitle1: {
-            "font-size": `clamp(8px, 0.8vw, 14px)`,
+            "font-size": `clamp(8px, 1.1vw, 16px)`,
         },
     },
     components: {

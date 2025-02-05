@@ -14,9 +14,10 @@ const SelectedImage = ({ selectedImg }: { selectedImg: string }) => {
             sx={{
                 width: "100%",
                 maxWidth: "800px",
-                height: "auto",
                 borderRadius: 2,
                 boxShadow: 3,
+                flexGrow: 1,
+                mr: "1em",
             }}
         />
     );
@@ -33,20 +34,13 @@ const ImageGallery = () => {
                 justifyContent: "center",
                 alignItems: "center",
                 width: "100%",
-                overflow: "hidden",
                 p: "3em",
+                overflow: "hidden",
             }}
         >
             <SelectedImage selectedImg={selectedImage} />
 
-            <ImageList
-                cols={3}
-                gap={8}
-                sx={{
-                    p: 4,
-                    flexGrow: 1,
-                }}
-            >
+            <ImageList cols={3} gap={8} sx={{ height: "100%" }}>
                 {images.map((img, index) => (
                     <ImageListItem
                         key={index}
