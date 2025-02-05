@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 
 export function useScrollObserver() {
     const [currentSection, setCurrentSection] = useState<string | null>(null);
@@ -15,7 +15,7 @@ export function useScrollObserver() {
                     }
                 });
             },
-            {root: null, threshold: 0.5}
+            { root: null, threshold: 0.5 },
         );
 
         snapItems.forEach((item) => observer.observe(item));

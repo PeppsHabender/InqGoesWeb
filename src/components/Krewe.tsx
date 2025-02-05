@@ -1,12 +1,12 @@
-import the_krewe from "@/assets/TheKrewe.jpg"
-import {alpha, Box, Card} from "@mui/material";
+import the_krewe from "@/assets/TheKrewe.jpg";
+import { alpha, Box, Card } from "@mui/material";
 import Carousel from "react-material-ui-carousel";
-import {theme} from "../theme/theme.ts";
-import {HexButton, HexImage} from "./utils/Hex.tsx";
+import { theme } from "../theme/theme.ts";
+import { HexButton, HexImage } from "./utils/Hex.tsx";
 import Typography from "@mui/material/Typography";
-import {useState} from "react";
-import {kreweId} from "../consts.ts";
-import {agents} from "./utils/Agents.tsx";
+import { useState } from "react";
+import { kreweId } from "../consts.ts";
+import { agents } from "./utils/Agents.tsx";
 
 class Agent {
     name: string;
@@ -39,29 +39,46 @@ export function Krewe() {
                 backgroundImage: `url(${the_krewe})`,
                 backgroundSize: "cover",
                 scrollSnapAlign: "start",
-                pt: "3em"
-            }}>
-            <Typography variant="h2">Meet the Krewe:</Typography>
-            <Box display="flex" flexDirection="row">
-                {agents.map((a, i) =>
-                    <HexButton size={75} onClick={() => setIdx(i)} text={a.name} fontSize={25} clicked={i === idx}/>
-                )}
+                pt: "3em",
+            }}
+        >
+            <Typography variant="h3">Meet the Krewe:</Typography>
+            <Box
+                display="flex"
+                flexDirection="row"
+                flexWrap="wrap"
+                justifyContent="center"
+            >
+                {agents.map((a, i) => {
+                    return (
+                        <HexButton
+                            size="clamp(40px, 3.5vw, 75px)"
+                            onClick={() => setIdx(i)}
+                            text={a.name}
+                            fontSize={25}
+                            clicked={i === idx}
+                            mx={2}
+                        />
+                    );
+                })}
             </Box>
 
             <Carousel
                 sx={{
                     width: "45%",
-                    margin: "auto"
+                    margin: "auto",
                 }}
                 interval={5000}
                 index={idx}
                 navButtonsAlwaysInvisible={true}
                 indicators={false}
                 swipe={false}
-                next={(now) => setIdx(now ?? (agents.length - 1))}
+                next={(now) => setIdx(now ?? agents.length - 1)}
                 prev={(now) => setIdx(now ?? 0)}
             >
-                {agents.map((agent) => <AgentItem agent={agent}/>)}
+                {agents.map((agent) => (
+                    <AgentItem agent={agent} />
+                ))}
             </Carousel>
         </Box>
     );
@@ -69,26 +86,26 @@ export function Krewe() {
 
 function AgentItem(props: { agent: Agent }) {
     return (
-        <Box display="flex" flexDirection="row" height="27%" mb={4}>
-            <HexImage src={props.agent.img} size={"25vh"} borderColor="white"/>
-            <Card sx={{
-                backgroundColor: alpha(theme.palette.background.paper, .8),
-                width: "70%",
-                height: "25vh",
-                ml: "4em",
-                p: "3em",
-                borderRadius: "1em",
-                display: 'flex',
-                justifyContent: "flex-end",
-                alignItems: 'start',
-                flexDirection: "column"
-            }}>
-                <Typography variant="h3">
+        <Box display="flex" flexDirection="row" alignItems="center" mb={4}>
+            <HexImage src={props.agent.img} size={"25vh"} borderColor="white" />
+            <Card
+                sx={{
+                    backgroundColor: alpha(theme.palette.background.paper, 0.8),
+                    width: "70%",
+                    height: "100%",
+                    ml: "3em",
+                    p: "2em",
+                    borderRadius: "1em",
+                    display: "flex",
+                    justifyContent: "flex-end",
+                    alignItems: "start",
+                    flexDirection: "column",
+                }}
+            >
+                <Typography variant="h4">
                     {"Agent " + props.agent.name}
                 </Typography>
-                <Typography variant="caption">
-                    {props.agent.title}
-                </Typography>
+                <Typography variant="caption">{props.agent.title}</Typography>
                 <Typography variant="body1">
                     {props.agent.description}
                 </Typography>

@@ -1,4 +1,4 @@
-import {RefObject, useEffect, useState} from "react";
+import { RefObject, useEffect, useState } from "react";
 
 export function useComponentHeight(ref: RefObject<HTMLElement>) {
     const [height, setHeight] = useState(0);

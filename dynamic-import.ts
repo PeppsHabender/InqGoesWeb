@@ -9,7 +9,12 @@ interface DynamicImportPluginOptions {
     extensions?: string[];
 }
 
-export default function imageListPlugin({folder, destination, moduleName, extensions}: DynamicImportPluginOptions): Plugin {
+export default function imageListPlugin({
+    folder,
+    destination,
+    moduleName,
+    extensions,
+}: DynamicImportPluginOptions): Plugin {
     return {
         name: "dynamic-import",
 
@@ -28,14 +33,21 @@ export default function imageListPlugin({folder, destination, moduleName, extens
             let files: string[] = [];
 
             try {
-                files = fs.readdirSync(dirPath)
-                    .filter((file) => (extensions ?? []).includes(path.extname(file).toLowerCase()))
+                files = fs
+                    .readdirSync(dirPath)
+                    .filter((file) =>
+                        (extensions ?? []).includes(
+                            path.extname(file).toLowerCase(),
+                        ),
+                    )
                     .map((file) => path.join(destination ?? folder, file));
             } catch (err) {
-                this.error(`Error reading files from folder "${folder}": ${err}`);
+                this.error(
+                    `Error reading files from folder "${folder}": ${err}`,
+                );
             }
 
             return `export default ${JSON.stringify(files)};`;
-        }
+        },
     };
 }

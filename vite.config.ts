@@ -1,23 +1,23 @@
-import {defineConfig} from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 import * as path from "node:path";
 
-const dynamicImport = require('./dynamic-import.ts').default;
+const dynamicImport = require("./dynamic-import.ts").default;
 
 export default defineConfig({
-    base: '/',
+    base: "/",
     plugins: [
         react(),
         dynamicImport({
-            folder: 'public/media',
-            destination: 'media',
-            moduleName: 'media',
-            extensions: ['.jpg']
-        })
+            folder: "public/media",
+            destination: "media",
+            moduleName: "media",
+            extensions: [".jpg"],
+        }),
     ],
     resolve: {
         alias: {
-            '@': path.resolve(__dirname, 'src')
-        }
+            "@": path.resolve(__dirname, "src"),
+        },
     },
-})
+});

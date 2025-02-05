@@ -1,10 +1,13 @@
-import {Box, styled} from "@mui/material";
-import {MouseParallaxChild, MouseParallaxContainer} from "react-parallax-mouse";
+import { Box, styled } from "@mui/material";
+import {
+    MouseParallaxChild,
+    MouseParallaxContainer,
+} from "react-parallax-mouse";
 import hb_bg from "@/assets/hb_bg.jpg";
 import hb_mid from "@/assets/hb_mid.png";
 import hb_front from "@/assets/hb_front.png";
 import logo from "@/assets/logo.png";
-import {home} from "../consts.ts";
+import { home } from "../consts.ts";
 
 const ParallaxChild = styled(MouseParallaxChild)`
     position: absolute;
@@ -13,7 +16,7 @@ const ParallaxChild = styled(MouseParallaxChild)`
     transform-origin: center;
 `;
 
-const ParallaxImg = ({scale, src}: { src: string; scale: number }) => (
+const ParallaxImg = ({ scale, src }: { src: string; scale: number }) => (
     <img
         src={src}
         alt=""
@@ -68,15 +71,15 @@ export function InquestParallax() {
                 resetOnLeave
             >
                 <ParallaxChild factorX={0.3} factorY={0.5}>
-                    <ParallaxImg src={hb_bg} scale={1.05}/>
+                    <ParallaxImg src={hb_bg} scale={1.05} />
                 </ParallaxChild>
                 <ParallaxChild factorX={0.5} factorY={0.6}>
-                    <ParallaxImg src={hb_mid} scale={1.1}/>
+                    <ParallaxImg src={hb_mid} scale={1.1} />
                 </ParallaxChild>
                 <ParallaxChild factorX={0.9}>
-                    <ParallaxImg src={hb_front} scale={1.12}/>
+                    <ParallaxImg src={hb_front} scale={1.12} />
                 </ParallaxChild>
-                <InqLogo/>
+                <InqLogo />
             </MouseParallaxContainer>
         </Box>
     );
