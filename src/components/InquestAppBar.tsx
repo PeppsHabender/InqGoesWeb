@@ -6,7 +6,7 @@ import IconButton from "@mui/material/IconButton";
 import { theme } from "../theme/theme.ts";
 import React from "react";
 import { home, improvetimizedId, kreweId, mediaId } from "../consts.ts";
-import { lighten } from "@mui/material";
+import { Box, lighten, useMediaQuery } from "@mui/material";
 
 const SectionButton = ({
     currentSection,
@@ -39,6 +39,8 @@ interface AppBarProps {
 
 export const InquestAppBar = React.forwardRef<HTMLHeadElement, AppBarProps>(
     ({ currentSection }, ref) => {
+        const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
         return (
             <AppBar
                 ref={ref}
@@ -48,7 +50,12 @@ export const InquestAppBar = React.forwardRef<HTMLHeadElement, AppBarProps>(
                     width: "100%",
                 }}
             >
-                <Toolbar sx={{ marginRight: "20%", marginLeft: "20%" }}>
+                <Toolbar
+                    sx={{
+                        marginRight: isMobile ? 0 : "20%",
+                        marginLeft: isMobile ? 0 : "20%",
+                    }}
+                >
                     <IconButton
                         size="large"
                         edge="start"
@@ -66,26 +73,31 @@ export const InquestAppBar = React.forwardRef<HTMLHeadElement, AppBarProps>(
                         Join the Inquest
                     </Typography>
                     <div style={{ flexGrow: 1 }} />
-                    <SectionButton
-                        sectionId={home}
-                        title="Home"
-                        currentSection={currentSection}
-                    />
-                    <SectionButton
-                        sectionId={improvetimizedId}
-                        title="About"
-                        currentSection={currentSection}
-                    />
-                    <SectionButton
-                        sectionId={kreweId}
-                        title="Krewe"
-                        currentSection={currentSection}
-                    />
-                    <SectionButton
-                        sectionId={mediaId}
-                        title="Media"
-                        currentSection={currentSection}
-                    />
+
+                    {!isMobile && (
+                        <Box>
+                            <SectionButton
+                                sectionId={home}
+                                title="Home"
+                                currentSection={currentSection}
+                            />
+                            <SectionButton
+                                sectionId={improvetimizedId}
+                                title="About"
+                                currentSection={currentSection}
+                            />
+                            <SectionButton
+                                sectionId={kreweId}
+                                title="Krewe"
+                                currentSection={currentSection}
+                            />
+                            <SectionButton
+                                sectionId={mediaId}
+                                title="Media"
+                                currentSection={currentSection}
+                            />
+                        </Box>
+                    )}
                 </Toolbar>
             </AppBar>
         );

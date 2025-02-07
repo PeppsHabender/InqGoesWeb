@@ -1,12 +1,12 @@
 import the_krewe from "@/assets/TheKrewe.jpg";
-import { alpha, Box, Card } from "@mui/material";
-import Carousel from "react-material-ui-carousel";
+import { alpha, Box, Card, useMediaQuery } from "@mui/material";
 import { theme } from "../theme/theme.ts";
 import { HexButton, HexImage } from "./utils/Hex.tsx";
 import Typography from "@mui/material/Typography";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { kreweId } from "../consts.ts";
 import { agents } from "./utils/Agents.tsx";
+import { useComponentSize } from "../hooks/ComponentHeight.tsx";
 
 class Agent {
     name: string;
@@ -21,6 +21,59 @@ class Agent {
         this.img = img;
     }
 }
+
+const AgentItem = ({
+    agent: { description, img, name, title },
+}: {
+    agent: Agent;
+}) => {
+    const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+    const cardRef = useRef<HTMLDivElement>(null);
+    const { width: cardWidth, height: cardHeight } = useComponentSize(cardRef);
+
+    return (
+        <Box
+            display="flex"
+            flexDirection={isMobile ? "column" : "row"}
+            alignItems="center"
+            justifyContent="center"
+            mb={4}
+            height="100%"
+            maxWidth={isMobile ? "90%" : "50%"}
+        >
+            <Box
+                flexGrow={isMobile ? 0 : 1}
+                alignItems="center"
+                justifyContent="center"
+                mb={isMobile ? 2 : 0}
+            >
+                <HexImage
+                    src={img}
+                    size={`min(max(${cardWidth}px, ${cardHeight * 0.8}px), ${isMobile ? "30vh" : "20vh"})`}
+                    borderColor="white"
+                />
+            </Box>
+            <Card
+                ref={cardRef}
+                sx={{
+                    backgroundColor: alpha(theme.palette.background.paper, 0.8),
+                    maxHeight: "100%",
+                    ml: isMobile ? 0 : "3em",
+                    p: "2em",
+                    borderRadius: "1em",
+                    display: "flex",
+                    justifyContent: "flex-end",
+                    alignItems: "start",
+                    flexDirection: "column",
+                }}
+            >
+                <Typography variant="h4">{"Agent " + name}</Typography>
+                <Typography variant="caption">{title}</Typography>
+                <Typography variant="body1">{description}</Typography>
+            </Card>
+        </Box>
+    );
+};
 
 export function Krewe() {
     const [idx, setIdx] = useState(0);
@@ -38,7 +91,6 @@ export function Krewe() {
             sx={{
                 backgroundImage: `url(${the_krewe})`,
                 backgroundSize: "cover",
-                scrollSnapAlign: "start",
                 pt: "3em",
             }}
         >
@@ -63,53 +115,7 @@ export function Krewe() {
                 })}
             </Box>
 
-            <Carousel
-                sx={{
-                    width: "45%",
-                    margin: "auto",
-                }}
-                interval={5000}
-                index={idx}
-                navButtonsAlwaysInvisible={true}
-                indicators={false}
-                swipe={false}
-                next={(now) => setIdx(now ?? agents.length - 1)}
-                prev={(now) => setIdx(now ?? 0)}
-            >
-                {agents.map((agent) => (
-                    <AgentItem agent={agent} />
-                ))}
-            </Carousel>
-        </Box>
-    );
-}
-
-function AgentItem(props: { agent: Agent }) {
-    return (
-        <Box display="flex" flexDirection="row" alignItems="center" mb={4}>
-            <HexImage src={props.agent.img} size={"25vh"} borderColor="white" />
-            <Card
-                sx={{
-                    backgroundColor: alpha(theme.palette.background.paper, 0.8),
-                    width: "70%",
-                    height: "100%",
-                    ml: "3em",
-                    p: "2em",
-                    borderRadius: "1em",
-                    display: "flex",
-                    justifyContent: "flex-end",
-                    alignItems: "start",
-                    flexDirection: "column",
-                }}
-            >
-                <Typography variant="h4">
-                    {"Agent " + props.agent.name}
-                </Typography>
-                <Typography variant="caption">{props.agent.title}</Typography>
-                <Typography variant="body1">
-                    {props.agent.description}
-                </Typography>
-            </Card>
+            <AgentItem agent={agents[idx]} />
         </Box>
     );
 }

@@ -54,7 +54,6 @@ interface HexButtonProps extends HexImageProps {
 export function HexButton({
     borderColor,
     clicked,
-    fontSize,
     onClick,
     size,
     text,
@@ -109,9 +108,8 @@ export function HexButton({
             </svg>
             {text ? (
                 <Typography
-                    fontSize={fontSize}
                     alignContent="center"
-                    variant="body1"
+                    variant="h4"
                     sx={{
                         width: "100%",
                         height: "100%",

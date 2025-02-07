@@ -63,7 +63,6 @@ export function InquestParallax() {
             <MouseParallaxContainer
                 containerStyle={{
                     position: "relative",
-                    scrollSnapAlign: "start",
                     height: "100%",
                 }}
                 globalFactorX={0.1}

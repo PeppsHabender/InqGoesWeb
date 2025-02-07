@@ -1,18 +1,22 @@
-import { Box, Card, Stack } from "@mui/material";
+import { Box, Card, Stack, useMediaQuery } from "@mui/material";
 import party_h from "@/assets/party_h.png";
 import agent_p from "@/assets/agent_p.png";
 import agent_b_cup from "@/assets/agent_b_cup.png";
 import Typography from "@mui/material/Typography";
 import inq_mug from "@/assets/inq_mug.png";
 import { improvetimizedId } from "../consts.ts";
+import { theme } from "../theme/theme.ts";
 
 const StrategyBanner = () => {
+    const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
     return (
         <Card
             component={Box}
             sx={{
                 py: 4,
                 pl: 4,
+                pr: isMobile ? 4 : 0,
                 border: 1,
                 boxShadow: 5,
                 width: "80%",
@@ -52,19 +56,21 @@ const StrategyBanner = () => {
                         </Typography>
                     </Box>
                 </Box>
-                <Box
-                    component="img"
-                    src={inq_mug}
-                    alt="Improvetimized Strategy Mug"
-                    flexShrink="0"
-                    sx={{
-                        height: "100%",
-                        width: "auto",
-                        aspectRatio: 1,
-                        mr: "-3vw",
-                        objectFit: "cover",
-                    }}
-                />
+                {!isMobile && (
+                    <Box
+                        component="img"
+                        src={inq_mug}
+                        alt="Improvetimized Strategy Mug"
+                        flexShrink="0"
+                        sx={{
+                            height: "100%",
+                            width: "auto",
+                            aspectRatio: 1,
+                            mr: "-3vw",
+                            objectFit: "cover",
+                        }}
+                    />
+                )}
             </Box>
         </Card>
     );
@@ -100,6 +106,8 @@ const ImageAndText = ({
 );
 
 export function ImprovetimizedVision() {
+    const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
     return (
         <Box
             component="div"
@@ -111,10 +119,9 @@ export function ImprovetimizedVision() {
             alignItems="center"
             height="100%"
             overflow="hidden"
-            maxWidth="60%"
+            maxWidth={isMobile ? "100%" : "60%"}
             mx="auto"
             p="1em"
-            sx={{ scrollSnapAlign: "start" }}
         >
             <Stack
                 direction="row"
