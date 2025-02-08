@@ -6,6 +6,8 @@ import Typography from "@mui/material/Typography";
 import inq_mug from "@/assets/inq_mug.png";
 import { improvetimizedId } from "../consts.ts";
 import { theme } from "../theme/theme.ts";
+import Carousel from "react-material-ui-carousel";
+import { ReactNode } from "react";
 
 const StrategyBanner = () => {
     const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -19,8 +21,7 @@ const StrategyBanner = () => {
                 pr: isMobile ? 4 : 0,
                 border: 1,
                 boxShadow: 5,
-                width: "80%",
-                height: "40%",
+                height: isMobile ? "auto" : "40%",
                 overflowY: "hidden",
             }}
         >
@@ -90,20 +91,43 @@ const ImageAndText = ({
         justifyContent="center"
         alignItems="center"
         flexDirection="column"
+        height="100%"
     >
         <Box
             component="img"
             src={imgSrc}
             className="hexagon"
-            sx={{ width: 150, height: 150 }}
             flexShrink={0}
+            sx={{ height: 150, width: 150 }}
         />
-        <Typography variant="h4">{title}</Typography>
-        <Typography variant="body1" textAlign="center" overflow="hidden">
-            {description}
-        </Typography>
+        <Box height="100%">
+            <Typography variant="h4" textAlign="center">
+                {title}
+            </Typography>
+            <Typography variant="body1" textAlign="center" overflow="hidden">
+                {description}
+            </Typography>
+        </Box>
     </Box>
 );
+
+const inqValues: ReactNode[] = [
+    <ImageAndText
+        imgSrc={party_h}
+        title="Improved"
+        description="We boosted chaos by 238.9%! With 34% more explosions and 100% less restraint, our experiments are faster, louder, and brilliantly unstable. It’s not just better—it’s Improvetimized."
+    />,
+    <ImageAndText
+        imgSrc={agent_p}
+        title="Optimized"
+        description="At the Inquest, we removed inefficiencies like safety to bring you villainy at peak performance. With 200% more ambition and 67% less hesitation, domination has never been this streamlined."
+    />,
+    <ImageAndText
+        imgSrc={agent_b_cup}
+        title="Inquest"
+        description="Perfection isn’t impossible—it’s Inquest. Every device, disaster, and triumph carries our seal of brilliance. Why settle for less when you can have 100% Inquest? And that’s the only percentage that matters."
+    />,
+];
 
 export function ImprovetimizedVision() {
     const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -119,34 +143,25 @@ export function ImprovetimizedVision() {
             alignItems="center"
             height="100%"
             overflow="hidden"
-            maxWidth={isMobile ? "100%" : "60%"}
+            maxWidth={isMobile ? "80%" : "60%"}
             mx="auto"
             p="1em"
         >
-            <Stack
-                direction="row"
-                alignItems="start"
-                justifyContent="center"
-                spacing={10}
-                maxHeight="50%"
-                overflow="hidden"
-            >
-                <ImageAndText
-                    imgSrc={party_h}
-                    title="Improved"
-                    description="We boosted chaos by 238.9%! With 34% more explosions and 100% less restraint, our experiments are faster, louder, and brilliantly unstable. It’s not just better—it’s Improvetimized."
+            {isMobile ? (
+                <Box height="auto" width="100%" mt="-3em">
+                    <Carousel children={inqValues} sx={{ height: "100%" }} />
+                </Box>
+            ) : (
+                <Stack
+                    children={inqValues}
+                    direction="row"
+                    alignItems="start"
+                    justifyContent="center"
+                    spacing={10}
+                    maxHeight="50%"
+                    overflow="hidden"
                 />
-                <ImageAndText
-                    imgSrc={agent_p}
-                    title="Optimized"
-                    description="At the Inquest, we removed inefficiencies like safety to bring you villainy at peak performance. With 200% more ambition and 67% less hesitation, domination has never been this streamlined."
-                />
-                <ImageAndText
-                    imgSrc={agent_b_cup}
-                    title="Inquest"
-                    description="Perfection isn’t impossible—it’s Inquest. Every device, disaster, and triumph carries our seal of brilliance. Why settle for less when you can have 100% Inquest? And that’s the only percentage that matters."
-                />
-            </Stack>
+            )}
             <StrategyBanner />
         </Box>
     );

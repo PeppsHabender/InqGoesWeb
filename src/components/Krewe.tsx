@@ -94,7 +94,9 @@ export function Krewe() {
                 pt: "3em",
             }}
         >
-            <Typography variant="h3">Meet the Krewe:</Typography>
+            <Typography variant="h3" gutterBottom>
+                Meet the Krewe:
+            </Typography>
             <Box
                 display="flex"
                 flexDirection="row"

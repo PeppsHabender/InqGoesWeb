@@ -26,7 +26,7 @@ export function useComponentSize(ref: RefObject<HTMLElement>) {
         return () => {
             window.removeEventListener("resize", update);
         };
-    }, [ref]);
+    }, [ref.current]);
 
     return { width, height };
 }

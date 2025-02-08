@@ -8,7 +8,7 @@ import { ImprovetimizedVision } from "./components/Improvetimized.tsx";
 import { Krewe } from "./components/Krewe.tsx";
 import { useComponentHeight } from "./hooks/ComponentHeight.tsx";
 import { useScrollObserver } from "./hooks/CurrentSection.tsx";
-import { InterceptedMedia } from "./components/Media.tsx";
+import { InterceptedMedia } from "./components/media/Media.tsx";
 
 function App() {
     const appBarRef: Ref<HTMLHeadElement> = useRef(null);
