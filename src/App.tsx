@@ -6,11 +6,11 @@ import Roster from "./components/roster/Roster.tsx";
 function App() {
     return (
         <div className="h-screen overflow-y-scroll">
-            <div className="h-screen">
+            <div className="h-screen w-screen">
                 <InquestParallax />
             </div>
             <Strategy />
-            <div className="h-screen">
+            <div className="h-screen w-screen">
                 <Roster />
             </div>
         </div>

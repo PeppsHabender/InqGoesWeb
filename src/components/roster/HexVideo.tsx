@@ -1,17 +1,18 @@
 type HexVideoProps = {
     src?: string;
+    className?: string;
 }
 
-const HexVideo = ({src}: HexVideoProps) => {
+const HexVideo = ({src, className = ""}: HexVideoProps) => {
     return (
-        <div className="relative overflow-hidden bg-black">
+        <div className={`relative overflow-hidden bg-black ${className}`}>
             <video
                 src={src}
                 autoPlay
                 loop
                 muted
                 playsInline
-                className="w-full h-full object-cover object-center"
+                className="object-center"
                 style={{ clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)" }}
             />
 

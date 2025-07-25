@@ -1,19 +1,19 @@
 import Hexagon from "../Hexagon.tsx";
-import agent_a from "../../assets/agent_a.mp4"
-import agent_b from "../../assets/agent_b.mp4"
-import agent_c from "../../assets/agent_c.mp4"
-import agent_h from "../../assets/agent_h.mp4"
-import agent_j from "../../assets/agent_j.mp4"
-import agent_l from "../../assets/agent_l.mp4"
-import agent_n from "../../assets/agent_n.mp4"
-import agent_p from "../../assets/agent_p.mp4"
-import agent_s from "../../assets/agent_s.mp4"
-import agent_x from "../../assets/agent_x.mp4"
-import agent_z from "../../assets/agent_z.mp4"
+import agent_a from "../../assets/agent_vids/agent_a.mp4"
+import agent_b from "../../assets/agent_vids/agent_b.mp4"
+import agent_c from "../../assets/agent_vids/agent_c.mp4"
+import agent_h from "../../assets/agent_vids/agent_h.mp4"
+import agent_j from "../../assets/agent_vids/agent_j.mp4"
+import agent_l from "../../assets/agent_vids/agent_l.mp4"
+import agent_n from "../../assets/agent_vids/agent_n.mp4"
+import agent_p from "../../assets/agent_vids/agent_p.mp4"
+import agent_s from "../../assets/agent_vids/agent_s.mp4"
+import agent_x from "../../assets/agent_vids/agent_x.mp4"
+import agent_z from "../../assets/agent_vids/agent_z.mp4"
 import HexVideo from "./HexVideo.tsx";
-import React, {useEffect, useRef, useState} from "react";
+import {useRef, useState} from "react";
 import Typography from "../Typography.tsx";
-
+import {useWindowDimensions} from "../../hooks.tsx";
 
 const agents = new Map([
     ["a", {
@@ -29,8 +29,8 @@ const agents = new Map([
         vid: agent_b,
     }],
     ["c", {
-        title: "Agent C",
-        description: "",
+        title: "Burned-Out, Buffed Up",
+        description: "He'd rather be pulling five-stars in his favorite gacha, but when the krewe needs him most, he’s always there-on time, on point, and boosting everyone’s speed like it’s second nature. He may not look motivated, but his quickness keeps the team moving and the mission alive.",
         vid: agent_c,
     }],
     ["h", {
@@ -42,41 +42,41 @@ const agents = new Map([
     ["j", {
         title: "The Architect of Calculated Chaos",
         description:
-            "As the krewe's master strategist, Agent J is the brain behind every breakthrough. From intricate plans to decisive adjustments in the heat of battle, Agent J's strategies turn possibilities into inevitabilities. He doesnt't just think outside the box—he redesigns it to fit his own rules.",
+            "As the krewe's master strategist, Agent J is the brain behind every breakthrough. From intricate plans to decisive adjustments in the heat of battle, Agent J's strategies turn possibilities into inevitabilities. He doesnt't just think outside the box-he redesigns it to fit his own rules.",
         vid: agent_j,
     }],
     ["l", {
         title: "Digital Demolisher and Damage Specialist",
         description:
-            "With unmatched hacking prowess and devastating firepower, Agent L is a one-person whirlwind of destruction. Whether breaking through enemy systems or breaking enemies themselves, Agent L's talents ensure no line of defense stands for long. In their hands, chaos is not just a tool—it's an art form.",
+            "With unmatched hacking prowess and devastating firepower, Agent L is a one-person whirlwind of destruction. Whether breaking through enemy systems or breaking enemies themselves, Agent L's talents ensure no line of defense stands for long. In their hands, chaos is not just a tool-it's an art form.",
         vid: agent_l,
     }],
     ["n", {
         title: "Eager Apprentice and New Blood",
         description:
-            "The youngest member of the krewe, Agent N brings fresh energy and untested potential to the team. His wide-eyed enthusiasm and willingness to learn have made him an instant favorite (and target of lighthearted pranks). Don't let his inexperience fool you—he's already proving his worth.",
+            "The youngest member of the krewe, Agent N brings fresh energy and untested potential to the team. His wide-eyed enthusiasm and willingness to learn have made him an instant favorite (and target of lighthearted pranks). Don't let his inexperience fool you-he's already proving his worth.",
         vid: agent_n,
     }],
     ["p", {
-        title: "Agent P",
-        description: "",
+        title: "The Analyst of Order and Unshakable Clarity",
+        description: "A recent addition to the krewe, Agent P brings both damage and dependable support with a calm, calculated approach. While chaos reigns around him, he sees the patterns others miss-and acts with purpose. For Agent P, everything makes sense, and that quiet confidence turns every move into a precise contribution to victory.",
         vid: agent_p,
     }],
     ["s", {
-        title: "Agent S",
-        description: "",
+        title: "The Unbreakable Wall with Questionable Vibes",
+        description: "Agent S takes hits like a champ and dishes out jokes just as hard-but don’t let the laughter fool you. Behind the shield is a specialist who thrives on pushing buttons (enemies’ and teammates’ alike). Equal parts hilarious and hazardous, Agent S is the kind of tank you love having on your side… most of the time.",
         vid: agent_s,
     }],
     ["x", {
         title: "Arcane Conductor of Absolute Power",
         description:
-            "Agent X wields magic with precision and artistry, channeling forces that others barely comprehend. A masterful caster and the krewe's go-to for magical solutions, his presence ensures every experiment is as spectacular as it is effective. For Agent X, power isn't just a tool—it's his symphony.",
+            "Agent X wields magic with precision and artistry, channeling forces that others barely comprehend. A masterful caster and the krewe's go-to for magical solutions, his presence ensures every experiment is as spectacular as it is effective. For Agent X, power isn't just a tool-it's his symphony.",
         vid: agent_x,
     }],
     ["z", {
         title: "Madness Incarnate and Chaos Personified",
         description:
-            "To call Agent Z unpredictable would be unhinged, but they have a knack for delivering results no one else could imagine—or survive.",
+            "To call Agent Z unpredictable would be unhinged, but they have a knack for delivering results no one else could imagine-or survive.",
         vid: agent_z,
     }],
 ]);
@@ -84,25 +84,12 @@ const agents = new Map([
 type SelectionBarProps = {
     setSelected: (agent: string) => void;
     selected: string;
-    ref: React.RefObject<HTMLDivElement | null>;
+    clientWidth: number;
 }
 
-const SelectionBar = ({ref, selected, setSelected}: SelectionBarProps) => {
-    const [width, setWidth] = useState(0);
-    const hexWidth = Math.min(100, Math.max(40, (width / agents.size * 2) - 30))
+const SelectionBar = ({selected, setSelected, clientWidth}: SelectionBarProps) => {
+    const hexWidth = Math.min(100, Math.max(40, (clientWidth / agents.size * 2) - 30))
     const [hovered, setHovered] = useState<string | null>(null);
-
-    useEffect(() => {
-        function onResize() {
-            setWidth(ref.current!.clientWidth);
-        }
-
-        window.addEventListener("resize", onResize);
-        onResize();
-
-        // Remove event listener on cleanup
-        return () => window.removeEventListener("resize", onResize);
-    }, [setWidth, ref]);
 
     return (
         <div className="justify-center sticky w-full top-5 gap-5 flex flex-wrap z-10">
@@ -135,19 +122,25 @@ const SelectionBar = ({ref, selected, setSelected}: SelectionBarProps) => {
 }
 
 const Roster = () => {
-    const [selected, setSelected] = useState("a");
     const ref = useRef<HTMLDivElement | null>(null);
+
+    const { height, width } = useWindowDimensions();
+    const isVertical = width / height < 1.2;
+
+    const [selected, setSelected] = useState("a");
     const selectedAgent = agents.get(selected);
 
     return (
-        <div className="relative p-5" ref={ref}>
+        <div className="relative p-5 flex flex-col" ref={ref}>
             <Typography variant="h2" className="pb-5">The Krewe</Typography>
-            <SelectionBar ref={ref} selected={selected} setSelected={setSelected}/>
-            <HexVideo src={selectedAgent?.vid}/>
-            <div className="relative space-y-1.5 bg-zinc-900 mt-10 px-6 pt-10 pb-8 rounded-lg ring-1 ring-dark-red mx-auto sm:max-w-200 sm:px-10 shadow-[inset_0px_0px_20px_10px_black]">
-                <Typography variant="h7" className="text-left">{"Agent " + selected.toUpperCase()}</Typography>
-                <Typography variant="body-small" className="text-left text-zinc-400">{selectedAgent?.title}</Typography>
-                <Typography variant="body" className="text-left">{selectedAgent?.description}</Typography>
+            <SelectionBar selected={selected} setSelected={setSelected} clientWidth={width}/>
+            <div className={`relative flex space-x-10 ${isVertical ? "flex-col items-center" : "flex-row items-start justify-center"}`}>
+                <HexVideo src={selectedAgent?.vid} className="absolute flex-auto my-10"/>
+                <div className={`relative space-y-1.5 my-auto bg-zinc-900 px-6 pt-10 pb-8 rounded-lg ring-1 ring-dark-red mx-auto sm:max-w-200 sm:px-10 shadow-[inset_0px_0px_20px_10px_black]`}>
+                    <Typography variant="h7" className="text-left">{"Agent " + selected.toUpperCase()}</Typography>
+                    <Typography variant="body-small" className="text-left text-zinc-400">{selectedAgent?.title}</Typography>
+                    <Typography variant="body" className="text-left">{selectedAgent?.description}</Typography>
+                </div>
             </div>
         </div>
     );
