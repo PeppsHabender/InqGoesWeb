@@ -137,7 +137,7 @@ const Roster = () => {
             <Typography variant="h2" className="pb-5">The Krewe</Typography>
             <SelectionBar selected={selected} setSelected={setSelected} clientWidth={width}/>
             <div className={`relative flex space-x-10 ${isVertical ? "flex-col items-center" : "flex-row items-start justify-center"}`}>
-                <HexVideo src={selectedAgent?.vid} className="absolute flex-auto my-10"/>
+                <HexVideo src={selectedAgent?.vid} className={`absolute flex-auto my-10 ${isVertical ? "mx-auto" : ""}`}/>
                 <div className={`relative space-y-1.5 my-auto bg-zinc-900 px-6 pt-10 pb-8 rounded-lg ring-1 ring-dark-red mx-auto sm:max-w-200 sm:px-10 shadow-[inset_0px_0px_20px_10px_black]`}>
                     <Typography variant="h7" className="text-left">{"Agent " + selected.toUpperCase()}</Typography>
                     <Typography variant="body-small" className="text-left text-zinc-400">{selectedAgent?.title}</Typography>
