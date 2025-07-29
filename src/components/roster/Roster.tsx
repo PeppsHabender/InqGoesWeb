@@ -88,7 +88,7 @@ type SelectionBarProps = {
 }
 
 const SelectionBar = ({selected, setSelected, clientWidth}: SelectionBarProps) => {
-    const hexWidth = Math.min(100, Math.max(40, (clientWidth / agents.size * 2) - 30))
+    const hexWidth = Math.min(80, Math.max(40, (clientWidth / agents.size * 2) - 50))
     const [hovered, setHovered] = useState<string | null>(null);
 
     return (
@@ -109,10 +109,12 @@ const SelectionBar = ({selected, setSelected, clientWidth}: SelectionBarProps) =
                             strokeWidth={2}
                             className="content-center"
                         >
+                            <div className="size-full bg-black/75 content-center">
                                 <span
                                     className="inline-block align-middle"
                                     style={{fontSize: hexWidth / 2.5, fontFamily: "ZenDots"}}>{key.toUpperCase()}
                                 </span>
+                            </div>
                         </Hexagon>
                     </div>
                 })

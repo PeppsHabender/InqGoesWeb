@@ -2,6 +2,7 @@ import './App.css'
 import {InquestParallax} from "./components/Parallax.tsx";
 import Strategy from "./components/roster/Strategy.tsx";
 import Roster from "./components/roster/Roster.tsx";
+import ContactUsForm from "./components/ContactUsForm.tsx";
 
 function App() {
     return (
@@ -12,6 +13,9 @@ function App() {
             <Strategy />
             <div className="h-screen w-screen">
                 <Roster />
+            </div>
+            <div className="h-screen w-screen">
+                <ContactUsForm />
             </div>
         </div>
     )
