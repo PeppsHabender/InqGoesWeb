@@ -8,6 +8,7 @@ import agent_l from "../../assets/agent_vids/agent_l.mp4"
 import agent_n from "../../assets/agent_vids/agent_n.mp4"
 import agent_p from "../../assets/agent_vids/agent_p.mp4"
 import agent_s from "../../assets/agent_vids/agent_s.mp4"
+import agent_v from "../../assets/agent_vids/agent_v.mp4"
 import agent_x from "../../assets/agent_vids/agent_x.mp4"
 import agent_z from "../../assets/agent_vids/agent_z.mp4"
 import HexVideo from "./HexVideo.tsx";
@@ -30,7 +31,7 @@ const agents = new Map([
     }],
     ["c", {
         title: "Burned-Out, Buffed Up",
-        description: "He'd rather be pulling five-stars in his favorite gacha, but when the krewe needs him most, he’s always there-on time, on point, and boosting everyone’s speed like it’s second nature. He may not look motivated, but his quickness keeps the team moving and the mission alive.",
+        description: "She'd rather be pulling five-stars in her favorite gacha, but when the krewe needs her most, she’s always there-on time, on point, and boosting everyone’s speed like it’s second nature. She may not look motivated, but her quickness keeps the team moving and the mission alive.",
         vid: agent_c,
     }],
     ["h", {
@@ -66,6 +67,12 @@ const agents = new Map([
         title: "The Unbreakable Wall with Questionable Vibes",
         description: "Agent S takes hits like a champ and dishes out jokes just as hard-but don’t let the laughter fool you. Behind the shield is a specialist who thrives on pushing buttons (enemies’ and teammates’ alike). Equal parts hilarious and hazardous, Agent S is the kind of tank you love having on your side… most of the time.",
         vid: agent_s,
+    }],
+    ["v", {
+        title: "The Vanguard of the Endless Tunnel",
+        description:
+            "Agent V is never far from the tunnel - sometimes it feels like he is the tunnel. Steadfast and unyielding, he thrives in the confined depths where others falter. His path may be narrow, but his resolve is vast, and when the krewe needs an epic breakthrough, Agent V is the one who carves the way forward.",
+        vid: agent_v,
     }],
     ["x", {
         title: "Arcane Conductor of Absolute Power",
