@@ -1,0 +1,74 @@
+[
+  {
+    "key": "A",
+    "title": "Spirited Motivator and Reluctant Inspiration",
+    "description": "Agent A's unconventional methods and love for \"liquid courage\" make him a wild card, but his knack for boosting morale is unmatched. Whether lifting spirits or lifting heavy objects (while slightly tipsy), his humor and heart keep the krewe grounded in their mission.",
+    "vid": "agent_a"
+  },
+  {
+    "key": "B",
+    "title": "Shadow Operative and Silent Eliminator",
+    "description": "When subtlety is key, Agent B is already three steps ahead. A master of stealth and precision, Agent B operates in the shadows, ensuring that obstacles simply… disappear. Efficiency, discretion, and ruthless focus define her every move.",
+    "vid": "agent_b"
+  },
+  {
+    "key": "C",
+    "title": "Burned-Out, Buffed Up",
+    "description": "She'd rather be pulling five-stars in her favorite gacha, but when the krewe needs her most, she’s always there-on time, on point, and boosting everyone’s speed like it’s second nature. She may not look motivated, but her quickness keeps the team moving and the mission alive.",
+    "vid": "agent_c"
+  },
+  {
+    "key": "H",
+    "title": "The Visionary Overseer of Improvetimized Excellence",
+    "description": "Agent H isn't just a leader; he's the beating heart of the Improvetimized Strategy Krewe. With a mind for innovation and a commanding presence, Agent H ensures every scheme is as bold as it is brilliant. He unites the krewe under a single vision: flawless domination through science, ingenuity, and unwavering determination.",
+    "vid": "agent_h"
+  },
+  {
+    "key": "J",
+    "title": "The Architect of Calculated Chaos",
+    "description": "As the krewe's master strategist, Agent J is the brain behind every breakthrough. From intricate plans to decisive adjustments in the heat of battle, Agent J's strategies turn possibilities into inevitabilities. He doesnt't just think outside the box-he redesigns it to fit his own rules.",
+    "vid": "agent_j"
+  },
+  {
+    "key": "L",
+    "title": "Digital Demolisher and Damage Specialist",
+    "description": "With unmatched hacking prowess and devastating firepower, Agent L is a one-person whirlwind of destruction. Whether breaking through enemy systems or breaking enemies themselves, Agent L's talents ensure no line of defense stands for long. In their hands, chaos is not just a tool-it's an art form.",
+    "vid": "agent_l"
+  },
+  {
+    "key": "N",
+    "title": "Eager Apprentice and New Blood",
+    "description": "The youngest member of the krewe, Agent N brings fresh energy and untested potential to the team. His wide-eyed enthusiasm and willingness to learn have made him an instant favorite (and target of lighthearted pranks). Don't let his inexperience fool you-he's already proving his worth.",
+    "vid": "agent_n"
+  },
+  {
+    "key": "P",
+    "title": "The Analyst of Order and Unshakable Clarity",
+    "description": "A recent addition to the krewe, Agent P brings both damage and dependable support with a calm, calculated approach. While chaos reigns around him, he sees the patterns others miss-and acts with purpose. For Agent P, everything makes sense, and that quiet confidence turns every move into a precise contribution to victory.",
+    "vid": "agent_p"
+  },
+  {
+    "key": "S",
+    "title": "The Unbreakable Wall with Questionable Vibes",
+    "description": "Agent S takes hits like a champ and dishes out jokes just as hard-but don’t let the laughter fool you. Behind the shield is a specialist who thrives on pushing buttons (enemies’ and teammates’ alike). Equal parts hilarious and hazardous, Agent S is the kind of tank you love having on your side… most of the time.",
+    "vid": "agent_s"
+  },
+  {
+    "key": "V",
+    "title": "The Vanguard of the Endless Tunnel",
+    "description": "Agent V is never far from the tunnel - sometimes it feels like he is the tunnel. Steadfast and unyielding, he thrives in the confined depths where others falter. His path may be narrow, but his resolve is vast, and when the krewe needs an epic breakthrough, Agent V is the one who carves the way forward.",
+    "vid": "agent_v"
+  },
+  {
+    "key": "X",
+    "title": "Arcane Conductor of Absolute Power",
+    "description": "Agent X wields magic with precision and artistry, channeling forces that others barely comprehend. A masterful caster and the krewe's go-to for magical solutions, his presence ensures every experiment is as spectacular as it is effective. For Agent X, power isn't just a tool-it's his symphony.",
+    "vid": "agent_x"
+  },
+  {
+    "key": "Z",
+    "title": "Madness Incarnate and Chaos Personified",
+    "description": "To call Agent Z unpredictable would be unhinged, but they have a knack for delivering results no one else could imagine-or survive.",
+    "vid": "agent_z"
+  }
+]
