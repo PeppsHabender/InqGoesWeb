@@ -63,6 +63,7 @@ const Roster = () => {
             eager: true,
             as: 'url',
         });
+        console.log(videoModules)
 
         setAgentVids(Object.values(videoModules));
     }, []);
@@ -73,7 +74,7 @@ const Roster = () => {
             <SelectionBar selected={selected} setSelected={setSelected} clientWidth={width}/>
             <div
                 className={`relative flex space-x-10 ${isVertical ? "flex-col items-center" : "flex-row items-start justify-center"}`}>
-                <HexVideo src={agentVids.filter(v => v.includes(selectedAgent.vid)).at(0)}
+                <HexVideo src={agentVids.filter(v => v.includes(selectedAgent.vid.replace(" ", "%20"))).at(0)}
                           className={`absolute flex-auto my-10 ${isVertical ? "mx-auto" : ""}`}/>
                 <div
                     className={`relative space-y-1.5 my-auto bg-zinc-900 px-6 pt-10 pb-8 rounded-lg ring-1 ring-dark-red mx-auto sm:max-w-200 sm:px-10 shadow-[inset_0px_0px_20px_10px_black]`}>
@@ -85,21 +86,21 @@ const Roster = () => {
                 </div>
             </div>
             <div className="shadow-[inset_0_10px_5px_-2px_rgba(0,0,0,0.8)] p-7 bg-zinc-900 -mx-5"/>
-            <div className="mx-auto w-11/12 sm:w-4/5 md:w-3/4 lg:w-2/3 xl:w-1/2 aspect-video max-w-[960px]">
-                <iframe
-                    className="w-full h-full"
-                    src="https://www.youtube.com/embed/RaseuOP2Gds?si=jDcbtZIyyxIv8slC"
-                    title="YouTube video player"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                />
+            <div className="w-full bg-black z-11">
+                <div className="mx-auto w-11/12 sm:w-4/5 md:w-3/4 lg:w-2/3 xl:w-1/2 aspect-video max-w-[960px]">
+                    <iframe
+                        className="w-full h-full"
+                        src="https://www.youtube.com/embed/RaseuOP2Gds?si=jDcbtZIyyxIv8slC"
+                        title="YouTube video player"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                    />
+                </div>
             </div>
             <div className="shadow-[inset_0_-10px_5px_-2px_rgba(0,0,0,0.8)] p-7 bg-zinc-900 -mx-5"/>
         </div>
     );
 }
-
-// <iframe width="560" height="315" src="https://www.youtube.com/embed/RaseuOP2Gds?si=jDcbtZIyyxIv8slC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 export default Roster;
