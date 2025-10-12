@@ -66,25 +66,26 @@ const ContactUsFormBody = ({setFocused}: ContactUsFormProps) => {
     }
 
     return (
-        <form method="post" onSubmit={handleSubmit} className="py-2 px-4 sm:px-6 pb-4 sm:pb-6 flex flex-col space-y-3 sm:space-y-4" onClick={e => e.stopPropagation()}>
-            <div className="relative">
-                <input
-                    required
-                    name= "sender"
-                    type="text"
-                    placeholder="Ingame Name/Discord Tag"
-                    className="w-full p-2 sm:p-3 rounded text-sm sm:text-base focus:outline-none ring-1 ring-gray-300 focus:ring-dark-red"
-                    minLength={7}
-                    maxLength={50}
-                    onFocus={() => setFocused(true)}
-                    onBlur={() => setFocused(false)}
-                    onChange={e => setLen1(e.target.value.length)}
-                />
-                <Typography variant="body-small" className="absolute right-1 bottom-1">
-                    {len1}/50
-                </Typography>
-            </div>
-            <div className="relative">
+        <div className="size-full">
+            <form method="post" onSubmit={handleSubmit} className="py-2 px-4 sm:px-6 pb-4 sm:pb-6 flex flex-col space-y-3 sm:space-y-4" onClick={e => e.stopPropagation()}>
+                <div className="relative">
+                    <input
+                        required
+                        name= "sender"
+                        type="text"
+                        placeholder="Ingame Name/Discord Tag"
+                        className="w-full p-2 sm:p-3 rounded text-sm sm:text-base focus:outline-none ring-1 ring-gray-300 focus:ring-dark-red"
+                        minLength={7}
+                        maxLength={50}
+                        onFocus={() => setFocused(true)}
+                        onBlur={() => setFocused(false)}
+                        onChange={e => setLen1(e.target.value.length)}
+                    />
+                    <Typography variant="body-small" className="absolute right-1 bottom-1">
+                        {len1}/50
+                    </Typography>
+                </div>
+                <div className="relative">
                 <textarea
                     required
                     name= "message"
@@ -96,12 +97,13 @@ const ContactUsFormBody = ({setFocused}: ContactUsFormProps) => {
                     onBlur={() => setFocused(false)}
                     onChange={e => setLen2(e.target.value.length)}
                 />
-                <Typography variant="body-small" className="absolute right-1 bottom-1">
-                    {len1 + len2}/{maxMessageLength}
-                </Typography>
-            </div>
-            {!submitted && <NeonButton/>}
-        </form>
+                    <Typography variant="body-small" className="absolute right-1 bottom-1">
+                        {len1 + len2}/{maxMessageLength}
+                    </Typography>
+                </div>
+                {!submitted && <NeonButton/>}
+            </form>
+        </div>
     )
 }
 
