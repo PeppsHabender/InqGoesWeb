@@ -72,9 +72,15 @@
     "vid": "agent_z"
   },
   {
-    "title": null,
+    "title": "Conduit of Hyperfocus and Creative Chaos",
     "key": "Q",
-    "description": null,
+    "description": "At first glance, Agent Q appears to be a detached recluse, slacking off work to indulge in his latest curiosity. However, once engaged, his intellect transforms into a force of monomania — immersing him entirely in the task at hand, forsaking rest and reason alike until every detail meets his exacting, perfectionist standards.",
     "vid": "Agent Q"
+  },
+  {
+    "title": "The Unknown",
+    "key": "W",
+    "description": "Unknown",
+    "vid": "agent_w"
   }
 ]
